@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import connectDB from "./db/db";
+import routes from "./routes/index";
 
 const app = express();
 
@@ -15,13 +16,14 @@ app.use(cors({
 }));
 
 
-// app.use(express.json()); // Parse JSON body in requests
+app.use(express.json()); // Parse JSON body in requests
 
 // Define routes
-// app.use("/api/v1/", routes);
+app.use("/api/v1/", routes);
 
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running at http://localhost:${port}/api/v1/`);
+    
 });
 
 export default app;
